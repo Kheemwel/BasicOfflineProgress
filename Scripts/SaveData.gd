@@ -7,15 +7,13 @@ func _ready() -> void:
 	load_data()
 
 func save_data():
-	var file = File.new()
-	file.open(SAVE_FILE, File.WRITE)
+	var file = FileAccess.open(SAVE_FILE, FileAccess.WRITE)
 	file.store_var(gamedata)
 	file.close()
 
 
 func load_data():
-	var file = File.new()
-	if not file.file_exists(SAVE_FILE):
+	if not FileAccess.file_exists(SAVE_FILE):
 		gamedata = {
 			"units": 0,
 			"unitspersec": 1,
@@ -24,7 +22,7 @@ func load_data():
 			"lastplaydatetime": null
 		}
 		save_data()
-	file.open(SAVE_FILE, File.READ)
+	var file = FileAccess.open(SAVE_FILE, FileAccess.READ)
 	gamedata = file.get_var()
 	file.close()
 	

@@ -1,109 +1,71 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://c655fwj8hslss"]
 
-[ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
-[ext_resource path="res://Roboto-Regular.ttf" type="DynamicFontData" id=2]
-
-[sub_resource type="DynamicFont" id=2]
-size = 30
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=3]
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=4]
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=5]
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=6]
-font_data = ExtResource( 2 )
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1"]
 
 [node name="Main" type="Control"]
-anchor_right = 1.014
+layout_mode = 3
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -5.20001
-rect_scale = Vector2( 1.01724, 1 )
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [node name="UnitTimer" type="Timer" parent="."]
 autostart = true
 
 [node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0.364706, 0.713726, 1 )
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.364706, 0.713726, 1)
 
 [node name="Units" type="Label" parent="."]
+layout_mode = 0
 anchor_left = 0.079
 anchor_top = 0.08
 anchor_right = 0.413
 anchor_bottom = 0.17
-margin_left = -0.0277519
-margin_right = 0.105995
-custom_fonts/font = SubResource( 2 )
 text = "Units:"
 
 [node name="Level" type="Label" parent="."]
+layout_mode = 0
 anchor_left = 0.079
 anchor_top = 0.28
 anchor_right = 0.26
 anchor_bottom = 0.328
-margin_left = -0.0277481
-margin_top = 1.52588e-05
-margin_right = -0.146751
-margin_bottom = -0.199982
-custom_fonts/font = SubResource( 3 )
 text = "Level: 0"
 
 [node name="CurrentUnitsperSecs" type="Label" parent="."]
+layout_mode = 0
 anchor_left = 0.079
 anchor_top = 0.36
 anchor_right = 0.49
 anchor_bottom = 0.408
-margin_left = -0.0277481
-margin_top = 1.52588e-05
-margin_right = 0.0832367
-margin_bottom = -0.199997
-custom_fonts/font = SubResource( 4 )
 text = "Current Units/s: 1"
 
 [node name="Price" type="Label" parent="."]
+layout_mode = 0
 anchor_left = 0.079
 anchor_top = 0.503
 anchor_right = 0.26
 anchor_bottom = 0.55
-margin_left = -0.0277481
-margin_top = -0.199997
-margin_right = 0.853256
-margin_bottom = 3.05176e-05
-custom_fonts/font = SubResource( 1 )
 text = "Price: 5"
 
 [node name="Upgrade" type="Button" parent="."]
+layout_mode = 0
 anchor_left = 0.079
 anchor_top = 0.58
 anchor_right = 0.316
 anchor_bottom = 0.642
-margin_left = -0.0277481
-margin_right = 0.109253
-margin_bottom = 0.199982
-custom_fonts/font = SubResource( 5 )
 text = "Upgrade"
 
 [node name="ResetButton" type="Button" parent="."]
+layout_mode = 0
 anchor_left = 0.395
 anchor_top = 0.86
 anchor_right = 0.565
 anchor_bottom = 0.92
-margin_left = -0.138748
-margin_top = 3.05176e-05
-margin_right = 0.03125
-margin_bottom = 1.00003
-custom_fonts/font = SubResource( 6 )
 text = "Reset"
 
 [node name="UpgradeTimer" type="Timer" parent="."]
@@ -112,6 +74,5 @@ autostart = true
 
 [connection signal="tree_exiting" from="." to="." method="_on_Main_tree_exiting"]
 [connection signal="timeout" from="UnitTimer" to="." method="_on_UnitTimer_timeout"]
-[connection signal="pressed" from="Upgrade" to="." method="_on_Upgrade_pressed"]
 [connection signal="pressed" from="ResetButton" to="." method="_on_ResetButton_pressed"]
 [connection signal="timeout" from="UpgradeTimer" to="." method="_on_UpgradeTimer_timeout"]
